@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Drop Ship</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+        <script type="module" src="./app/vir-app.element.ts"></script>
+        <link rel="stylesheet" type="text/css" href="/index.css" />
+    </head>
+    <body>
+        <vir-app>
+            <div class="loading-placeholder">
+                <span class="loading-placeholder-text">
+                    Loading
+                    <span class="loading-placeholder-dots">&nbsp;&nbsp;&nbsp;</span>
+                </span>
+                <div>
+                    <span class="loading-placeholder-current-resource-name">&nbsp;</span>
+                    <div class="loading-placeholder-progress-track">
+                        <div class="loading-placeholder-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </vir-app>
+        <script>
+            function scaleLoadingPlaceholder() {
+                const loadingPlaceholder = document.querySelector('.loading-placeholder');
+
+                if (!(loadingPlaceholder instanceof HTMLElement)) {
+                    return;
+                }
+
+                /** Matches the scaling in `@antha/asset`'s `AnthaAssetLoadingScreen`. */
+                loadingPlaceholder.style.zoom = String(
+                    Math.min(window.innerWidth / 1920, window.innerHeight / 1080),
+                );
+            }
+
+            window.addEventListener('resize', scaleLoadingPlaceholder);
+            scaleLoadingPlaceholder();
+        </script>
+    </body>
+</html>
