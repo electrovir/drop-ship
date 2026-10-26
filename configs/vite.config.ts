@@ -9,6 +9,11 @@ export default defineConfig(
     (baseConfig) => {
         return {
             ...baseConfig,
+            worker: {
+                ...baseConfig.worker,
+                /** The audio worker's dependencies use top-level await, which `iife` can't bundle. */
+                format: 'es',
+            },
         };
     },
 );
