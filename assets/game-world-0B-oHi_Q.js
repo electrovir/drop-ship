@@ -1,0 +1,1 @@
+var e={height:1080,width:1920};export{e as t};
